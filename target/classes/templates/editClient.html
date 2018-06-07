@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template">
+<head>
+    <meta charset="utf-8" />
+    <title>MobiPhone</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+
+        <h1>Modifier Client</h1>
+
+        <form class="form-group" th:object="${clients}" action="/edit" th:action="@{/edit}" method="post">
+            <input th:type="hidden" name="id" th:field="${clients.cin}" />
+            <div class="form-group">
+                <label for="cin">cin</label>
+                <input type="text" class="form-control" id="cin" th:field="${clients.cin}" />
+            </div>
+            <div class="form-group">
+                <label for="nom">nom</label>
+                <input type="text" class="form-control" id="nom" th:field="${clients.nom}" />
+            </div>
+            <div class="form-group">
+                <label for="prenom">prenom</label>
+                <input type="text" class="form-control" id="prenom" th:field="${clients.prenom}" />
+            </div>
+            <div class="form-group">
+                <label for="adresse">adresse</label>
+                <input type="text" class="form-control" id="adresse" th:field="${clients.adresse}" />
+            </div>
+            <div class="form-group">
+                <label for="email">email</label>
+                <input type="text" class="form-control" id="email" th:field="${clients.email}" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="#" th:href="@{/listClient}" class="btn btn-danger" role="button">Cancel</a>
+        </form>
+
+    </div></div>
+</body>
+</html>

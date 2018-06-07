@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+
+      layout:decorator="template">
+<head>
+    <meta charset="utf-8" />
+    <title>MobiPhone</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <a href="/create/1" th:href="@{/formCreate}">Create</a>
+
+   <div>
+       <!-- <div class="panel panel-primary">
+          <div class="panel-heading">Consultation d'un Client</div>
+          <div class="panel-body">
+              <form th:action="@{/consulterClient}" method="get">
+                  <div>
+                      <label>Cin Client:</label>
+                      <input type="text" name="cin" th:value="${cin}"/>
+                      <button type="submit" class="btn btn-primary">Ok</button>
+                  </div>
+              </form>
+          </div>
+      </div>-->
+         <div class="panel panel-primary" th:if="${client}">
+             <div class="panel-heading">Informations sur le client</div>
+             <div class="panel-body">
+
+                 <div>
+                     <label>Cin :</label> <label th:text="${client.cin}"></label>
+                 </div>
+                 <div>
+                     <label>Nom :</label> <label th:text="${client.nom}"></label>
+                 </div>
+                 <div>
+                     <label>prenom :</label> <label th:text="${client.prenom}"></label>
+                 </div>
+                 <div>
+                     <label>adresse :</label> <label
+                         th:text="${client.adresse}"></label>
+                 </div>
+                 <div>
+                     <label>email :</label> <label
+                         th:text="${client.email}"></label>
+                 </div>
+
+             </div>
+         </div>
+     </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-primary" th:if="${clients}">
+            <div class="panel-heading">Liste des Clients</div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Cin</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Adress</th>
+                        <th>Mail</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr th:each="o:${clients}">
+                        <td th:text="${o.cin}"></td>
+                        <td th:text="${o.nom}"></td>
+                        <td th:text="${o.prenom}"></td>
+                        <td th:text="${o.adresse}"></td>
+                        <td th:text="${o.email}"></td>
+                        <td>
+                            <a href="/edit/1" th:href="@{/edit/__${o.cin}__}">Edit</a>
+
+                            <a href="/delete/1" th:href="@{/delete/__${o.cin}__}">Delete</a>
+
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

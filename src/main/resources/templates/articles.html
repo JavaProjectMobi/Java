@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+
+      layout:decorator="template">
+<head>
+    <meta charset="utf-8" />
+    <title>MobiPhone</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <a href="/create/1" th:href="@{/formCreateArticle}">Create</a>
+
+    <div>
+        <!-- <div class="panel panel-primary">
+           <div class="panel-heading">Consultation d'un Client</div>
+           <div class="panel-body">
+               <form th:action="@{/consulterClient}" method="get">
+                   <div>
+                       <label>Cin Client:</label>
+                       <input type="text" name="cin" th:value="${cin}"/>
+                       <button type="submit" class="btn btn-primary">Ok</button>
+                   </div>
+               </form>
+           </div>
+       </div>-->
+        <div class="panel panel-primary" th:if="${article}">
+            <div class="panel-heading">Informations sur le articles</div>
+            <div class="panel-body">
+
+                <div>
+                    <label>Cin :</label> <label th:text="${article.quantiteSeuil}"></label>
+                </div>
+                <div>
+                    <label>Nom :</label> <label th:text="${article.prix}"></label>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-primary" th:if="${articles}">
+            <div class="panel-heading">Liste des Articles</div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <tr>
+                        <th>quantiteSeuil</th>
+                        <th>prix</th>
+
+                    </tr>
+                    <tr th:each="o:${articles}">
+                        <td th:text="${o.quantiteSeuil}"></td>
+                        <td th:text="${o.prix}"></td>
+
+                        <td>
+                            <a href="/edit/1" th:href="@{/editArticle/__${o.idArt}__}">Edit</a>
+
+                            <a href="/delete/1" th:href="@{/deleteArticle/__${o.idArt}__}">Delete</a>
+
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

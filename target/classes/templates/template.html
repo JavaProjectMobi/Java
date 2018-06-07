@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css"
+          href="/css/MyStyle.css"
+          th:href="@{/vcss/MyStyle.css}" />
+</head>
+<body>
+<header>
+    <div class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+               <li><a th:href="@{/operation}">Operations</a></li>
+                <li><a th:href="@{/listArticles}">Articles</a></li>
+                <li><a th:href="@{/listClients}">Clients</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <form th:action="@{/consulterClient}"  method="get">
+                    <div>
+                        <label>Cin Client:</label>
+                        <input type="text" name="cin" th:value="${cin}"/>
+                        <button type="submit" class="btn btn-primary">Ok</button>
+                    </div>
+                </form>
+            </ul>
+        </div>
+    </div>
+</header>
+<section layout:fragment="content"></section>
+
+
+<footer class="navbar-fixed-bottom">
+    <small>l'adresse de votre compte</small>
+</footer>
+</body>
+</html>
