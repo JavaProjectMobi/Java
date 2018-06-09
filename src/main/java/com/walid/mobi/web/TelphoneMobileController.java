@@ -39,7 +39,7 @@ public class TelphoneMobileController {
         return "editTelphone";
     }
 
-    @RequestMapping(value="/editTelphone", method = RequestMethod.POST)
+    @RequestMapping(value="/editTel", method = RequestMethod.POST)
     public String edit(Model model, TelphoneMobile telphone) {
         telephoneimp.create(telphone);
         model.addAttribute("telphones", telephoneimp.findAll());

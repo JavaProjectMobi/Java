@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Saisie des Articles</title>
+    <link rel="stylesheet" type="text/css" href="../static.css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static.css/style.css"
+          th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+
+        <h1>New Telephone</h1>
+
+        <form class="form-group" th:action="@{/createCarte}" th:object="${carte}" method="post">
+            <div class="form-group">
+                <label>quantité</label>
+                <input type="text" th:field="${carte.quantiteSeuil}" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label >prix</label>
+                <input type="text" th:field="${carte.prix}" class="form-control"  />
+            </div>
+            <div class="form-group">
+                <label>Type</label>
+                <select th:field="${carte.type}" class="form-control">
+                <option  th:value="FIXE"
+                            th:utext="FIXE">FIXE</option>
+               <option  th:value="GSM"
+                            th:utext="GSM">GSM</option>
+                </select>
+                
+            </div>
+            <div class="form-group">
+                <label >Operateur</label>
+                <select th:field="${carte.operateur}" class="form-control">
+                <option  th:value="ooredoo"
+                            th:utext="Ooredoo">Tunisiana</option>
+               <option  th:value="telecom"
+                            th:utext="Telecom">Telecom</option>
+              	<option  th:value="orange"
+                            th:utext="Orange">Orange</option>
+                </select>
+                           </div>
+            <div class="text-danger"
+                 th:text="${#httpServletRequest.getParameter('error')}"></div>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="#" th:href="@{/listCarte}" class="btn btn-danger" role="button">Cancel</a>
+        </form>
+
+    </div></div>
+</body>
+</html>

@@ -1,14 +1,14 @@
 package com.walid.mobi.metier.Impl;
 
-import com.walid.mobi.dao.ArticleRepository;
-import com.walid.mobi.entities.Article;
-import com.walid.mobi.entities.Commande;
-import com.walid.mobi.metier.IArticle;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.walid.mobi.dao.ArticleRepository;
+import com.walid.mobi.entities.Article;
+import com.walid.mobi.metier.IArticle;
 
 @Service
 @Transactional

@@ -17,23 +17,23 @@
 
         <h1>New Telephone</h1>
 
-        <form class="form-group" th:action="@{/createTelphone}" th:object="${telphones}" method="post">
+        <form class="form-group" th:action="@{/createTelphone}" th:object="${telphoneMobile}" method="post">
             <div class="form-group">
                 <label>quantité</label>
-                <input type="text" th:field="${telphones.quantiteSeuil}" class="form-control"/>
+                <input type="text" th:field="${telphoneMobile.quantiteSeuil}" class="form-control"/>
             </div>
 
             <div class="form-group">
                 <label >prix</label>
-                <input type="text" th:field="${telphones.prix}" class="form-control"  />
+                <input type="text" th:field="${article.prix}" class="form-control"  />
             </div>
             <div class="form-group">
                 <label >model</label>
-                <input type="text" th:field="${telphones.model}" class="form-control"  />
+                <input type="text" th:field="${article.model}" class="form-control"  />
             </div>
             <div class="form-group">
                 <label >refrence</label>
-                <input type="text" th:field="${telphones.refrence}" class="form-control"  />
+                <input type="text" th:field="${article.refrence}" class="form-control"  />
             </div>
             <div class="text-danger"
                  th:text="${#httpServletRequest.getParameter('error')}"></div>
