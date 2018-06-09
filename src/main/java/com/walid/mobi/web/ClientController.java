@@ -16,12 +16,6 @@ public class ClientController {
     @Autowired
     private IClient clientimp;
 
-    @RequestMapping("/clients")
-    public String index(){
-
-        return "listClients";
-    }
-
     @RequestMapping("/listClients")
     public String listClients(Model model){
 

@@ -1,25 +1,30 @@
 package com.walid.mobi.web;
 
 import com.walid.mobi.entities.Article;
+import com.walid.mobi.entities.Client;
 import com.walid.mobi.metier.IArticle;
+import com.walid.mobi.metier.IClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
+
 @Controller
 public class articleController {
 
+
     @Autowired
     private IArticle articleimp;
+    @Autowired
+    private IClient clientimp;
 
-    @RequestMapping("/articles")
-    public String index(){
+    public List<Client> clients;
 
-        return "listArticles";
-    }
 
     @RequestMapping("/listArticles")
     public String listArticles(Model model){
@@ -27,7 +32,12 @@ public class articleController {
         model.addAttribute("articles",articleimp.findAll());
         return "articles";
     }
-
+    @ModelAttribute("allClients")
+    public List<Client> populateClients(Model model) {
+        clients = this.clientimp.findAll();
+        model.addAttribute("clients",clients);
+        return clients;
+    }
     @RequestMapping(value="/deleteArticle/{idArt}", method = RequestMethod.GET)
     public String deleteArticle(Model model, @PathVariable(required = true, name = "idArt") Long idArt) {
         articleimp.delete(idArt);
@@ -72,7 +82,6 @@ public class articleController {
 
     @RequestMapping(value="/createArticle", method= RequestMethod.POST)
     public String saveArticle(Model model,Article article){
-
         try{
             articleimp.create(article);
 

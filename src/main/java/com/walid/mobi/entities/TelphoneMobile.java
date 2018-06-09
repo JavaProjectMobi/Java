@@ -31,13 +31,19 @@ public class TelphoneMobile extends Article {
 		this.refrence = refrence;
 	}
 	
-	public TelphoneMobile(double prix, Integer quantiteSeuil, String model, String refrence) {
-		super(quantiteSeuil,prix);
+
+	public TelphoneMobile() {
+	}
+
+	public TelphoneMobile(Integer quantiteSeuil, double prix, String model, String refrence) {
+		super(quantiteSeuil, prix);
 		this.model = model;
 		this.refrence = refrence;
 	}
 
-	public TelphoneMobile() {
+	public TelphoneMobile(String model, String refrence) {
+		this.model = model;
+		this.refrence = refrence;
 	}
 
 	@Override

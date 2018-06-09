@@ -15,12 +15,12 @@
 <div layout:fragment="content">
     <div class="container">
 
-        <h1>New Article</h1>
+        <h1>New Telephone</h1>
 
-        <form class="form-group" th:action="@{/createArticle}" th:object="${article}" method="post">
+        <form class="form-group" th:action="@{/createTelphone}" th:object="${telphoneMobile}" method="post">
             <div class="form-group">
                 <label>quantité</label>
-                <input type="text" th:field="${article.quantiteSeuil}" class="form-control"/>
+                <input type="text" th:field="${telphoneMobile.quantiteSeuil}" class="form-control"/>
             </div>
 
             <div class="form-group">
@@ -28,15 +28,17 @@
                 <input type="text" th:field="${article.prix}" class="form-control"  />
             </div>
             <div class="form-group">
-                <label>Client</label>
-                <select th:field="${article.client}">
-                    <option th:each="client : ${clients}" th:value="${client.cin}" th:text="${client.nom}"></option>
-                </select>
+                <label >model</label>
+                <input type="text" th:field="${article.model}" class="form-control"  />
+            </div>
+            <div class="form-group">
+                <label >refrence</label>
+                <input type="text" th:field="${article.refrence}" class="form-control"  />
             </div>
             <div class="text-danger"
                  th:text="${#httpServletRequest.getParameter('error')}"></div>
             <button type="submit" class="btn btn-primary">Save</button>
-            <a href="#" th:href="@{/listArticles}" class="btn btn-danger" role="button">Cancel</a>
+            <a href="#" th:href="@{/listTelphones}" class="btn btn-danger" role="button">Cancel</a>
         </form>
 
     </div></div>

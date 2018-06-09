@@ -83,10 +83,12 @@ public class Article implements Serializable {
 		this.client = client;
 	}
 
+
 	public Article(Integer quantiteSeuil, double prix) {
 		this.quantiteSeuil = quantiteSeuil;
 		this.prix = prix;
 	}
+
 
 	public Article() {
 		super();
